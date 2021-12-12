@@ -67,7 +67,10 @@ function App() {
   };
 
   const toAddsCustomDish = (customDish) => {
-    setFavoritesDishes((prev) => [...prev, customDish]);
+    favoritesDishes
+      ? setFavoritesDishes((prev) => [...prev, customDish])
+      : setFavoritesDishes([customDish]);
+
     toast.success(`${customDish.strMeal} was added successfully!`, {
       position: "center",
     });
@@ -113,14 +116,14 @@ function App() {
         gutter={10}
         toastOptions={{
           className: "Toaster",
-          duration: 4000,
+          duration: 3000,
           style: {
             background: "#3a80cf",
             color: "#fff",
           },
 
           error: {
-            duration: 4000,
+            duration: 3000,
           },
         }}
       />

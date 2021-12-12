@@ -34,14 +34,14 @@ function DishCard({
           )}
 
           {location.pathname === "/" && (
-            <>
+            <div className={s.btnGroup}>
               <button className={s.btn} onClick={skipHandler} type="button">
                 Skip
               </button>
               <button className={s.btn} onClick={likeHandler} type="button">
                 Like
               </button>
-            </>
+            </div>
           )}
         </div>
       </div>

@@ -31,3 +31,10 @@
 .modal textarea:focus::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
 }
+
+@media screen and (max-width: 851px) {
+  .backdrop {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}

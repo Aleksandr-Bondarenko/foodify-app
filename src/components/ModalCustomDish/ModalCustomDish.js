@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Modal, Form, FloatingLabel, Button } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
+import s from "./ModalCustomDish.module.css";
 
 function ModalCustomDish({ isShowModal, hideModal, toAddsCustomDish }) {
   const [customDish, setCustomDish] = useState({ title: "", recipe: "" });
@@ -30,6 +31,8 @@ function ModalCustomDish({ isShowModal, hideModal, toAddsCustomDish }) {
   return (
     <>
       <Modal
+        backdropClassName={s.backdrop}
+        contentClassName={s.modal}
         show={isShowModal}
         onHide={() => {
           resetForm();
@@ -39,7 +42,7 @@ function ModalCustomDish({ isShowModal, hideModal, toAddsCustomDish }) {
         keyboard={true}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add your recipe of dish</Modal.Title>
+          <Modal.Title>Hello, masterchef!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -71,6 +74,7 @@ function ModalCustomDish({ isShowModal, hideModal, toAddsCustomDish }) {
             </FloatingLabel>
 
             <Button
+              className={s.btn}
               type="submit"
               variant="primary"
               disabled={

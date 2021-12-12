@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AppBar from "./components/AppBar/AppBar";
-import RandomDishPage from "./pages/RandomDishPage";
-import FavoritesDishesPage from "./pages/FavoritesDishesPage";
+import RandomDishPage from "./pages/RandomDishPage/RandomDishPage";
+import FavoritesDishesPage from "./pages/FavoritesDishesPage/FavoritesDishesPage";
 import ModalCustomDish from "./components/ModalCustomDish/ModalCustomDish";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { fetchRandomDish } from "./services/foodify-api";
 
 function App() {
@@ -40,36 +42,20 @@ function App() {
 
     if (!isAdd) {
       setFavoritesDishes((prev) => [...prev, randomDish]);
-      console.log("Блюдо добавлено успешно.");
+      toast.success(`${randomDish.strMeal} added successfully!`);
       return;
     }
 
-    console.log("Такое блюдо уже добавлено!");
-
-    // const favorites = JSON.parse(localStorage.getItem("favorites"));
-    // if (!favorites) {
-    //   localStorage.setItem("favorites", JSON.stringify([randomDish]));
-    //   console.log("Блюдо добавлено успешно.");
-    // } else {
-    //   const isAdd = favorites.find((obj) => obj.idMeal === randomDish.idMeal);
-    //   if (!isAdd) {
-    //     favorites.push(randomDish);
-    //     localStorage.setItem("favorites", JSON.stringify(favorites));
-    //     console.log("Блюдо добавлено успешно.");
-    //     return;
-    //   }
-
-    //   console.log("Такое блюдо уже добавлено!");
-    // }
+    toast.error(`${randomDish.strMeal} is already in the favorites!`);
   };
 
   const removeFromFavorites = (id) => {
-    console.log("REMOVE FROM APP");
-    console.log(id);
     const updateFavorites = favoritesDishes.filter(
       (item) => item.idMeal !== id
     );
+    const addedDish = favoritesDishes.find((item) => item.idMeal === id);
     setFavoritesDishes([...updateFavorites]);
+    toast.success(`${addedDish.strMeal} was deleted successfully!`);
   };
 
   const showModal = () => {
@@ -82,6 +68,9 @@ function App() {
 
   const toAddsCustomDish = (customDish) => {
     setFavoritesDishes((prev) => [...prev, customDish]);
+    toast.success(`${customDish.strMeal} was added successfully!`, {
+      position: "center",
+    });
   };
 
   return (
@@ -116,6 +105,24 @@ function App() {
         isShowModal={isShowModal}
         hideModal={hideModal}
         toAddsCustomDish={toAddsCustomDish}
+      />
+
+      <Toaster
+        position="top-right"
+        reverseOrder={true}
+        gutter={10}
+        toastOptions={{
+          className: "Toaster",
+          duration: 4000,
+          style: {
+            background: "#3a80cf",
+            color: "#fff",
+          },
+
+          error: {
+            duration: 4000,
+          },
+        }}
       />
     </div>
   );

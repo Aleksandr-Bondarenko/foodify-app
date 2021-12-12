@@ -1,0 +1,88 @@
+.appBar {
+  /* padding: 15px 0; */
+  padding-top: 10px;
+  background-color: var(--primary-color);
+  box-shadow: 0 5px 10px 5px var(--primary-color);
+  min-width: 430px;
+  height: 60px;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  /* padding: 15px 0; */
+}
+
+.link,
+.activeLink {
+  padding: 0 15px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 800;
+  color: #ffffff;
+  border-radius: 20px;
+  transition: box-shadow 280ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.activeLink {
+  color: var(--secondary-color);
+  border-radius: 10px;
+  cursor: not-allowed;
+}
+
+.link:hover,
+.link:focus {
+  box-shadow: 0 0 10px 5px #ffffff, inset 0 0 10px 5px #ffffff;
+
+  color: #ffffff;
+  border: none;
+}
+
+.activeLink:hover,
+.activeLink:focus {
+  color: var(--secondary-color);
+}
+
+.btn {
+  border-radius: 20px;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: "Truculenta", sans-serif;
+  font-weight: 800;
+  font-size: 25px;
+  transform: scale(1);
+  transition: transform 280ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 852px) {
+  .appBar {
+    /* height: 100px; */
+  }
+
+  .wrap {
+    display: block;
+    text-align: center;
+  }
+
+  .nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+  }
+
+  .btn {
+    color: var(--primary-color);
+  }
+}

@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
-import imgPath from "../../img/placeholder.png";
+import imgPath from "../../img/placeholder.jpg";
+import s from "./DishCard.module.css";
 
 function DishCard({
   title,
@@ -13,32 +14,36 @@ function DishCard({
 
   return (
     <>
-      <div>
+      <div className={s.card}>
         <img
+          className={s.img}
           width="390"
           src={imgUrl ? imgUrl : `${imgPath}`}
           alt="Default poster of the dish"
         />
+        <div className={s.text}>
+          <h2 className={s.title}>{title}</h2>
+          <p className={s.desc}>{desc}</p>
+        </div>
 
-        <h2>{title}</h2>
-        <p>{desc}</p>
-
-        {location.pathname === "/favorites" && (
-          <button onClick={removeHandler} type="button">
-            Remove
-          </button>
-        )}
-
-        {location.pathname === "/" && (
-          <>
-            <button onClick={skipHandler} type="button">
-              Skip
+        <div className={s.cardFooter}>
+          {location.pathname === "/favorites" && (
+            <button className={s.btn} onClick={removeHandler} type="button">
+              Remove
             </button>
-            <button onClick={likeHandler} type="button">
-              Like
-            </button>
-          </>
-        )}
+          )}
+
+          {location.pathname === "/" && (
+            <>
+              <button className={s.btn} onClick={skipHandler} type="button">
+                Skip
+              </button>
+              <button className={s.btn} onClick={likeHandler} type="button">
+                Like
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

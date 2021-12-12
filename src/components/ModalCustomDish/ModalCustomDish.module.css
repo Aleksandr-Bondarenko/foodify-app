@@ -1,0 +1,33 @@
+.backdrop {
+  background-color: #3a80cfc2;
+}
+
+.modal input,
+.modal textarea {
+  background-color: #3a80cf5d;
+}
+
+.modal .btn {
+  display: block;
+  margin: 20px auto 0;
+}
+
+.modal textarea::-webkit-scrollbar {
+  background-color: transparent;
+  width: 4px;
+}
+
+.modal textarea::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.modal textarea:hover::-webkit-scrollbar,
+.modal textarea:focus::-webkit-scrollbar {
+  background-color: #8080806e;
+  width: 4px;
+}
+
+.modal textarea:hover::-webkit-scrollbar-thumb,
+.modal textarea:focus::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+}

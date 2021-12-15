@@ -33,6 +33,7 @@ function App() {
   const addToFavorites = () => {
     if (!favoritesDishes) {
       setFavoritesDishes([randomDish]);
+      toast.success(`${randomDish.strMeal} added successfully!`);
       return;
     }
 

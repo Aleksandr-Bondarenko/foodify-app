@@ -7,7 +7,9 @@ function ModalCustomDish({ isShowModal, hideModal, toAddsCustomDish }) {
   const [customDish, setCustomDish] = useState({ title: "", recipe: "" });
 
   const inputHandler = (e) => {
-    setCustomDish((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const valueNormalize = e.target.value.trim(" ");
+    valueNormalize.length !== 0 &&
+      setCustomDish((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const resetForm = () => {
